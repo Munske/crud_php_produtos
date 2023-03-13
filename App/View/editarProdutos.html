@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>produtos</title>
+</head>
+
+<body>
+    <main>
+        <h3>Edição</h3>
+        {% for produto in produtos %}
+        <form action="http://localhost/my/crud_php_produtos/produtos/editarProduto/{{produto.id}}" method="post">
+            <div>
+                <label for="id">Id - Não Editável</label><br>
+                <input style="background-color: rgba(155, 5, 5, 0.584);" readonly type="number" id="id" name="id" value="{{produto.id}}"><br>
+            </div>
+            <div>
+                <label for="descricao">Descrição</label><br>
+                <input type="text" id="descricao" name="descricao" value="{{produto.descricao}}" required>
+            </div>
+            <div>
+                <label for="quantidade">quantidade</label><br>
+                <input type="number" id="quantidade" name="quantidade" value="{{produto.quantidade}}" required>
+            </div>
+            <div>
+                <label for="valor">Valor</label><br>
+                <input type="number" step="any" id="valor" name="valor" value="{{produto.valor}}" required>
+            </div>
+            <div>
+                <br>
+                <button>Editar</button>
+                <br><br>
+                <a href="http://localhost/my/crud_php_produtos/produtos">Voltar</a>
+            {% endfor %}
+            </div>
+            {% if msg != '' %}
+            <h3>{{msg.msg}} <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h3>
+            {% endif %}
+        </form>
+    </main>
+</body>
+
+</html>

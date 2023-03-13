@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>produtos</title>
+</head>
+
+<body>
+    <main>
+        <h3>Cadastro</h3>
+        <form action="http://localhost/my/crud_php_produtos/produtos/cadastrarProduto" method="post">
+            <div>
+                <label for="descricao">Descrição</label><br>
+                <input type="text" id="descricao" name="descricao" required>
+            </div>
+            <div>
+                <label for="quantidade">quantidade</label><br>
+                <input type="number" id="quantidade" name="quantidade" required>
+            </div>
+            <div>
+                <label for="valor">Valor</label><br>
+                <input type="number" step="any" id="valor" name="valor" required>
+            </div>
+            <div>
+                <br>
+                <button>Cadastrar</button>
+                <br><br>
+                <a href="http://localhost/my/crud_php_produtos/produtos">Voltar</a>
+                
+            </div>
+            {% if msg != '' %}
+            <h3>{{msg.msg}} <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h3>
+            {% endif %}
+        </form>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>produtos</title>
+</head>
+
+<body>
+    <main>
+        <h4>Listagem Produtos</h4>
+        <form action="http://localhost/my/crud_php_produtos/produtos/consultarProduto" method="post">
+            <div>
+                <label for="id">Id</label><br>
+                <input type="number" id="id" name="id"><br>
+            </div>
+            <div>
+                <label for="descricao">Descrição</label><br>
+                <input type="text" id="descricao" name="descricao">
+            </div>
+            <div>
+                <label for="quantidade">quantidade</label><br>
+                <input type="number" id="quantidade" name="quantidade">
+            </div>
+            <div>
+                <label for="valor">Valor</label><br>
+                <input type="number"  step="any" id="valor" name="valor">
+            </div>
+            <div>
+                <br>
+                <button>Consultar Produto</button>
+                |
+                <a href="http://localhost/my/crud_php_produtos/produtos">Consultar Todos</a>
+                |
+                <a href="http://localhost/my/crud_php_produtos/produtos/cadastrarProduto">Cadastrar Novo</a>
+                <p>Resultados encontrados: {{tamanhoConsulta}}</p>
+            </div>
+            {% if msg != '' %}
+            <h3>{{msg.msg}} <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h3>
+            {% endif %}
+        </form>
+        <table border="2">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Descrição</th>
+                    <th>quantidade</th>
+                    <th>Valor</th>
+                    <th>Alterar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                <tr>
+                    <td>{{ produto.id }}</td>
+                    <td>{{ produto.descricao }}</td>
+                    <td>{{ produto.quantidade }}</td>
+                    <td>{{ produto.valor }}</td>
+                    <td><a href="http://localhost/my/crud_php_produtos/produtos/editarProduto/{{ produto.id }}"><i>Editar</i></a></td>
+                    <td><a href="http://localhost/my/crud_php_produtos/produtos/deletarProduto/{{ produto.id }}"><i>Deletar</i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>
